@@ -1,0 +1,201 @@
+% ---------------------------------------
+% Reference Parameters
+% Author: Sebastien Bubeck
+% Title: Introduction to Online Optimization
+% Publisher: Princeton University - Department of Operations Research and Financial Engineering
+% Date: December 14, 2011
+
+% ---------------------------------------
+% Online Optimization
+\subsubsection{
+بهینه‌سازی برخط
+}
+
+
+% ---------------------------------------
+% Introduction
+\subsubsubsection{
+مقدمه
+}
+
+در دنیایی که جمع‌آوری خودکار داده فراگیر شده است، آماردان‌ها باید چهارچوب‌های فکری خودشان را با مسئله‌های جدید مطابقت دهند. هر زمان که صحبت از شبکه‌ی اینترنت، داده‌های مشتری
+\LTRfootnote{
+Consumer Data
+}
+، و یا بازار مالی
+\LTRfootnote{
+Financial Market
+}
+ با میان می‌آید، یک ویژگی مشترک به چشم می‌آید: حجم بسیار زیاد داده که نیازمند فهم و تحلیل سریع است. شرایط مسئله‌های کنونی با آمار کلاسیک بسیار تفاوت دارد، تعداد مشاهده‌ها بسیار زیاد و تعداد متغیرهای مرتبط بسیار کم است. یکی از مدل‌های به تفصیل بررسی شده برای یادگیری، چهارچوب نظریه‌ی یادگیری آماری
+ \LTRfootnote{
+ Statistical Learning Theory
+ }
+  است. که به اختصار در ادامه بررسی خواهد شد:
+
+% Definition
+\begin{quote}
+{\bf
+پروتکل
+\LTRfootnote{
+Protocol
+}
+ یادگیری آماری:
+} 
+پروتکل ابتدایی یادگیری آماری به شکل زیر است:
+\begin{itemize}
+\item
+مشاهد کنید نمونه‌های 
+$Z_1, \cdots, Z_n \in \randomvariable{Z}$. 
+فرض می‌کنیم که توزیع مشاهده‌ها مستقل و هم‌توزیع
+\LTRfootnote{
+I.I.D.
+}
+ از توزیع احتمال 
+$\hollow{P}$
+آمده اند.
+
+\item
+تصمیم بگیرید (یا عملی را انتخاب کنید) 
+$a( Z_1, \cdots, Z_n ) \in \set{A}$ 
+که 
+$\set{A}$ 
+یک مجموعه‌ی داده شده از تصمیم‌های ممکن است.
+
+\item
+به اندازه‌ی متوسط ضرر
+\LTRfootnote{
+Loss
+} 
+$\hollow{E}_{Z \sim \hollow{P}} \mathfunction{l}( a(Z_1,\cdots,Z_n), Z )$ 
+هزینه بپردازید، که در آن 
+$\mathfunction{l} : \set{A} \times \randomvariable{Z} \rightarrow \hollow{R}_+$ 
+تابع ضرر داده شده است.
+\end{itemize}
+
+{\bf
+هدف:
+} 
+کمینه کردن (و کنترل) ریسک مازاد
+\LTRfootnote{
+Excess Risk
+}
+:
+\[
+r_n = \hollow{E}_{Z \sim \hollow{P}} \mathfunction{l}( a(Z_1, \cdots, Z_n), Z ) - \inf_{a \in \set{A}} \hollow{E}_{Z \sim \hollow{P}} \mathfunction{l} ( a, Z )
+\]
+که معیار اندازه‌گیری میزان متوسط ضرر متحمل شده در مقایسه با انتخاب بهینه است.
+
+\end{quote}
+
+
+
+% Remark
+\begin{quote}
+{\bf
+تعریف:
+} 
+کنترل کردن ریسک مازاد، به معنی پیدا کردن کران بالا برای 
+$r_n$ 
+است که یا در امید ریاضی
+\LTRfootnote{
+Expectation
+} 
+صدق کند ( نسبت به دنباله‌ی 
+$Z_1,\cdots,Z_n$ 
+) و یا با احتمال حداقل 
+$1 - \delta$. 
+معمولا کران بالا به شکلی عبارتی است بر اساس معیارهایی از پیچیدگی
+\LTRfootnote{
+Complexity Measure
+} 
+$\set{A}$ 
+و 
+$\mathfunction{l}$. 
+همچنین اگر کران بالا به توزیع 
+$\hollow{P}$ 
+بستگی داشته باشد، می‌گوییم کران بالا وابسته به توزیع
+\LTRfootnote{
+Distribution-Dependent
+} 
+است و در غیر این صورت گوییم که آزاد از توزیع
+\LTRfootnote{
+Distribution-Free
+} 
+است.
+
+\end{quote}
+
+
+فرمول‌بندی بالا کلّی بوده و باعث می‌شود که مسئله‌های بسیاری را در بر گیرد. در ادامه به چند مثال اشاره می‌کنیم:
+
+% Example
+{\bf
+مثال: تخمین رگرسیون
+\LTRfootnote{
+Regression Estimation
+}
+} 
+\begin{itemize}
+\item
+داده‌ی مشاهده شده جفت‌هایی از نقطه‌ها به شکل 
+$ Z_i = ( X_i, Y_i ) \in \set{X} \times \set{Y} $ 
+هستند.
+
+
+\item
+مجموعه‌ی ممکن انتخاب‌ها، مجموعه‌ی تابع‌های از 
+$\set{X}$ 
+به 
+$\set{Y}$ 
+است، 
+$\set{A} \subset \{ \mathfunction{f} : \set{X} \rightarrow \set{Y} \} $.
+
+
+\item
+تابع هزینه 
+$\mathfunction{l}(a, (x,y) )$ 
+میزان دقت پیش‌بینی تابع 
+$\mathfunction{a}: \set{X} \rightarrow \set{Y}$ 
+را اندازه‌گیری می‌کند. به عنوان نمونه اگر 
+$\set{Y}$ 
+یک فضای نرم‌دار
+\LTRfootnote{
+Normed Space
+}
+ باشد، یک انتخاب معمول 
+$\mathfunction{l}(a, (x,y)) = || a(x) - y ||$ 
+خواهد بود.
+
+\end{itemize}
+
+% Example
+{\bf
+تکمیل ماتریس (یا فیلتر کردن همکارانه!؟؟)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
