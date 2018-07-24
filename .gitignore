@@ -1,1 +1,4 @@
+# Ignore Vim Temporary files
 **/*~
+# Igonre Cleaning Script file
+clean.sh
