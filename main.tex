@@ -2,18 +2,19 @@
 
 
 % -- Clear Page Before Each Section --- %
-% 
 \usepackage{titlesec}
 \newcommand{\sectionbreak}{\clearpage}
 
 
 % ------- Hyperref Links ------------- %
-% 
+\usepackage{import}
+
+% ------- Hyperref Links ------------- %
 \usepackage[colorlinks=true]{hyperref}
 
+
 % ------- Mathematical Symbols ------- %
-% 
-\usepackage{amssymb}
+\usepackage{amssymb, mathrsfs}
 
 
 % ------- XePersian ------------------ %
@@ -27,7 +28,18 @@
 
 
 % ------ Path to chapter files ----- %
-\newcommand*{\chapters}{./chapters}
+\newcommand*{\chapters}{./chapters/}
+
+
+% ------ SubSubSubSection ----- %
+\newcommand{\subsubsubsection}[1]{{\bf #1\par}}
+
+
+% ------ Math Operations ----- %
+\newcommand{\randomvariable}[1]{\mathfrak{#1}}
+\newcommand{\set}[1]{\mathcal{#1}}
+\newcommand{\hollow}[1]{\mathbb{#1}}
+\newcommand{\mathfunction}[1]{\mathscr{#1}}
 
 
 
@@ -107,50 +119,48 @@
 \newpage
 % List of Tables: End
 
-
-
 % ----------------------------------- %
-% Introduction
-\input{\chapters/introduction}
+% Introduction: Motivation and Background
+\import{\chapters}{introduction.tex}
 % Introduction: End
 
 
 % ----------------------------------- %
 % Previous Research
-\input{\chapters/previous-research}
+\import{\chapters}{previous-research.tex}
 % Previous Research: End
 
 
 % ----------------------------------- %
 % Currnet Research
-\input{\chapters/current-research}
+\import{\chapters}{current-research.tex}
 % Current Research: End
 
 
 % ----------------------------------- %
 % Our Approach
-\input{\chapters/our-approach}
+\import{\chapters}{our-approach.tex}
 % Our Approach: End
 
 
 
 % ----------------------------------- %
 % Our Results
-\input{\chapters/our-results}
+\import{\chapters}{our-results.tex}
 % Our Results: End
 
 
 
 % ----------------------------------- %
 % Conclusion
-\input{\chapters/conclusion}
+\import{\chapters}{conclusion.tex}
 % Conclusion: End
 
 
 
 % ----------------------------------- %
 % Appendices
-\input{\chapters/appendices}
+\import{\chapters}{appendices.tex}
 % Appendices: End
 
 
@@ -158,7 +168,7 @@
 
 % ----------------------------------- %
 % References
-\input{\chapters/references}
+\import{\chapters}{references.tex}
 % References: End
 
 
