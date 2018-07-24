@@ -1,0 +1,199 @@
+\documentclass{article}[a4paper, 11px]
+
+
+% -- Clear Page Before Each Section --- %
+% 
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
+
+
+% ------- Hyperref Links ------------- %
+% 
+\usepackage[colorlinks=true]{hyperref}
+
+% ------- Mathematical Symbols ------- %
+% 
+\usepackage{amssymb}
+
+
+% ------- XePersian ------------------ %
+\usepackage{xepersian}
+
+
+% ------ Font Styles ---------------- %
+\settextfont[Scale=1]{XBNiloofar}
+\setdigitfont{PGaramond}
+
+
+
+% ------ Path to chapter files ----- %
+\newcommand*{\chapters}{./chapters}
+
+
+
+
+
+
+
+
+
+\begin{document}
+
+% ----------------------------------- %
+% Cover Page
+صفحه‌ی اول کاور
+
+\newpage
+% Cover Page: End
+
+
+% ----------------------------------- %
+% Dedicated to
+تقدیم به ...
+
+\newpage
+% Dedicated to: End
+
+
+% ----------------------------------- %
+% Abstract
+\begin{abstract}
+چکیده‌ی پایان‌نامه
+\end{abstract}
+\newpage
+% Abstract: End
+
+% ----------------------------------- %
+% Summary
+\section*{
+خلاصه‌ی پایان‌نامه
+}
+
+خلاصه‌ی پایان‌نامه
+\newpage
+% summary: End
+
+% ----------------------------------- %
+% Foreword (Acknowledgement)
+\section*{
+تقدیر
+}
+
+تقدیر
+\newpage
+% Foreword: End
+
+
+% ----------------------------------- %
+% Table of Contents
+\tableofcontents
+
+\newpage
+% Table of Contents: End
+
+
+% ----------------------------------- %
+% List of Figures
+\listoffigures
+
+\newpage
+% List of Figures: End
+ 
+ 
+ % ----------------------------------- %
+% List of Tables
+\listoftables
+
+\newpage
+% List of Tables: End
+
+
+
+% ----------------------------------- %
+% Introduction
+\input{\chapters/introduction}
+% Introduction: End
+
+
+% ----------------------------------- %
+% Previous Research
+\input{\chapters/previous-research}
+% Previous Research: End
+
+
+% ----------------------------------- %
+% Currnet Research
+\input{\chapters/current-research}
+% Current Research: End
+
+
+% ----------------------------------- %
+% Our Approach
+\input{\chapters/our-approach}
+% Our Approach: End
+
+
+
+% ----------------------------------- %
+% Our Results
+\input{\chapters/our-results}
+% Our Results: End
+
+
+
+% ----------------------------------- %
+% Conclusion
+\input{\chapters/conclusion}
+% Conclusion: End
+
+
+
+% ----------------------------------- %
+% Appendices
+\input{\chapters/appendices}
+% Appendices: End
+
+
+
+
+% ----------------------------------- %
+% References
+\input{\chapters/references}
+% References: End
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
