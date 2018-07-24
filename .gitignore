@@ -2,3 +2,7 @@
 **/*~
 # Igonre Cleaning Script file
 clean.sh
+# Ignore Dropbox folder
+.dropbox
+# Swp files made by Gummi (Tex Editor)
+**/*.swp
