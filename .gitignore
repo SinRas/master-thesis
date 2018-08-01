@@ -12,3 +12,5 @@ clean.sh
 **/test_*
 # PyCache
 **/__pycache__
+# Data Cache
+**/cache
