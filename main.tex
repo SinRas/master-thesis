@@ -1,46 +1,20 @@
 \documentclass{article}[a4paper, 11px]
 
+% ------ Base Path ----- %
+\newcommand{\basepath}{./}
 
-% -- Clear Page Before Each Section --- %
-\usepackage{titlesec}
-\newcommand{\sectionbreak}{\clearpage}
-
-
-% ------- Hyperref Links ------------- %
-\usepackage{import}
-
-% ------- Hyperref Links ------------- %
-\usepackage[colorlinks=true]{hyperref}
-
-
-% ------- Mathematical Symbols ------- %
-\usepackage{amssymb, mathrsfs}
-
-
+% ------- Style Packages ------------------ %
+\input{styles.sty}
 
 % ------- XePersian ------------------ %
 \usepackage{xepersian}
-
 
 % ------ Font Styles ---------------- %
 \settextfont[Scale=1]{XBNiloofar}
 \setdigitfont{PGaramond}
 
-
-
-% ------ Path to chapter files ----- %
-\newcommand*{\chapters}{./chapters/}
-
-
-% ------ SubSubSubSection ----- %
-\newcommand{\subsubsubsection}[1]{{\bf #1\par}}
-
-
-% ------ Math Operations ----- %
-\newcommand{\randomvariable}[1]{\mathfrak{#1}}
-\newcommand{\set}[1]{\mathcal{#1}}
-\newcommand{\hollow}[1]{\mathbb{#1}}
-\newcommand{\mthfnc}[1]{ \mathit{#1} }
+% ------- Commands ------------------ %
+\input{commands.cmd}
 
 
 

@@ -14,3 +14,5 @@ clean.sh
 **/__pycache__
 # Data Cache
 **/cache
+# Compiled .pdf
+main.pdf
