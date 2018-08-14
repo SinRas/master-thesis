@@ -95,6 +95,13 @@ class DeterministicWeightedMajority:
     def visualize( self ):
         # Create new Figure
         plt.figure( figsize=(16,10) )
+        # Thresholds
+        ## High
+        plt.axhline( self.high_threshold , color='black' )
+        ## Dominance
+        plt.axhline( 0.5 , color='red' )
+        ## Low
+        plt.axhline( self.low_threshold , color='black' )
         # Create Data
         N_experts = len(self.experts_dict)
         N_weights = len(self.experts_dict[0]['weights'])
