@@ -16,3 +16,5 @@ clean.sh
 **/cache
 # Compiled .pdf
 main.pdf
+# Stored Data from Traffic Simulation
+codes/traffic/od_p_p.txt.7z
