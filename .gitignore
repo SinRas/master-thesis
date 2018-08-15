@@ -1,20 +1,29 @@
 # Vim Temporary files
 **/*~
+
 # Cleaning Script file
 clean.sh
+
 # Dropbox folder
 .dropbox
+
 # Swp files made by Gummi (Tex Editor)
 **/*.swp
+
 # Jupyter Checkpoint Folders
 **/.ipynb_checkpoints
+
 # flaged files: Files containing 'test_' in the beginning of their name
 **/test_*
+
 # PyCache
 **/__pycache__
+
 # Data Cache
 **/cache
+
 # Compiled .pdf
 main.pdf
+
 # Stored Data from Traffic Simulation
 codes/traffic/od_p_p.txt.7z
