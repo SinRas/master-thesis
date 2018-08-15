@@ -5,7 +5,7 @@ import os
 ## Folders
 search_folders = [ 'chapters', 'notes' ]
 ## Files
-root_files = [ 'commands.cmd', 'styles.sty' ]
+root_files = [ 'main.tex', 'commands.cmd', 'styles.sty' ]
 
 # Add Header
 def modify_file( file_path ):
