@@ -1,3 +1,4 @@
+% !TEX encoding = UTF-8 Unicode
 % ------ Path to chapter files ----- %
 \newcommand*{\chapters}{\basepath chapters/}
 
