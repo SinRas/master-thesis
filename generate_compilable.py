@@ -26,6 +26,9 @@ if __name__ == '__main__':
             # Filter
             file_content = file_content.split( '\\begin{document}' , 1)[1]
             file_content = file_content.split( '\\end{document}' , 1)[0]
+            # OSX Compatibility
+            osx_header = '% !TEX encoding = UTF-8 Unicode\n'
+            file_content = osx_header + file_content
             # Create
             new_file_path = file_path.replace(compilable_flag,'')
             with open(new_file_path,'w') as out_file:
