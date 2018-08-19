@@ -35,3 +35,14 @@
   \fi}
 
 \makeatother
+
+
+% ------ Pseudo Code Environenment ----- %
+\renewcommand{\algorithmicif}{\textbf{اگر}}
+\renewcommand{\algorithmicwhile}{\textbf{تا زمانی که}}
+\renewcommand{\algorithmicend}{\textbf{پایان}}
+\renewcommand{\algorithmicfor}{\textbf{به ازای}}
+\renewcommand{\algorithmicdo}{\textbf{انجام بده}}
+\renewcommand{\algorithmicthen}{\textbf{آنگاه}}
+\renewcommand{\algorithmicelse}{\textbf{وگرنه}}
+\renewcommand{\algorithmicprint}{\textbf{چاپ کن}}
