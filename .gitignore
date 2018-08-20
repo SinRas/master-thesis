@@ -13,8 +13,9 @@ clean.sh
 # Jupyter Checkpoint Folders
 **/.ipynb_checkpoints
 
-# flaged files: Files containing 'test_' in the beginning of their name
+# flaged files: Files containing 'test_'/'ignore_' in the beginning of their name
 **/test_*
+**/ignore_*
 
 # PyCache
 **/__pycache__
@@ -27,3 +28,7 @@ main.pdf
 
 # Stored Data from Traffic Simulation
 codes/traffic/od_p_p.txt.7z
+
+# Raw Synthetic Data
+codes/traffic/data/tntp/synthetic/raw/
+codes/traffic/data/tntp/synthetic/server/

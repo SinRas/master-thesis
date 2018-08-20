@@ -1,0 +1,6 @@
+{
+    'N_proc': 3,
+    'N_samples': 3,
+    'data_dir': 'data/tntp/synthetic/raw/',
+    'factors': [ 3.0, 4.0 ],
+}
