@@ -200,7 +200,14 @@ class Averaging():
             ## Define and Get Shortest Path from Generator
             # shortest_path = next( path_gen( city_graph  = self.city_graph, pair = pair, pair_flows = self.edge_costs ) )[0]
             source, target = pair
-            shortest_path = nx.dijkstra_path( self.city_graph, source, target, weight='cost' )
+            ## Sub Graph with other OD Nodes removed
+            city_subgraph = self.city_graph.copy()
+            for k in range(1,self.od_matrix.shape[0]):
+                if( k == source or k == target ):
+                    continue
+                city_subgraph.remove_node( k )
+            ## Get Shortest Path
+            shortest_path = nx.dijkstra_path( city_subgraph, source, target, weight='cost' )
             ## OD for Pair
             u,v = pair
             od_value = self.od_matrix[u-self.nominal][v-self.nominal]

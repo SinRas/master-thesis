@@ -32,3 +32,4 @@ codes/traffic/od_p_p.txt.7z
 # Raw Synthetic Data
 codes/traffic/data/tntp/synthetic/raw/
 codes/traffic/data/tntp/synthetic/server/
+codes/traffic/data/tntp/synthetic/temp-plot\.html
