@@ -46,3 +46,15 @@
 \renewcommand{\algorithmicthen}{\textbf{آنگاه}}
 \renewcommand{\algorithmicelse}{\textbf{وگرنه}}
 \renewcommand{\algorithmicprint}{\textbf{چاپ کن}}
+
+
+
+% ------ Theorem Environenment ----- %
+\newtheorem{theorem}{قضیه}[section]
+\newtheorem{definition}[theorem]{تعریف}
+\newtheorem{contract}[theorem]{پیمان}
+\newtheorem{proposition}[theorem]{گزاره}
+\newtheorem{lemma}[theorem]{لم}
+\newtheorem{remark}[theorem]{تذکر}
+\newtheorem{example}[theorem]{نمونه}
+\newtheorem{corollary}[theorem]{نتیجه}
