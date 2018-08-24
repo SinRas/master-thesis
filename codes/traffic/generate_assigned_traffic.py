@@ -20,7 +20,7 @@ def intermediate( file_path, new_od_matrix, od_pairs, graph ):
     with open( file_path, 'w' ) as out_file:
         out_file.write( str(
             {
-                'od_matrix': str(od_matrix.tolist()),
+                'od_matrix': str(new_od_matrix.tolist()),
                 'edge_costs': str(edge_costs),
             }
         ) )
@@ -100,11 +100,14 @@ if __name__ == '__main__':
         new_file_names = [ file_name for file_name in to_be_file_names if( not file_name in existing_file_names ) ]
         # Generate New OD Matrix
         print( '| |-Tasks' )
+        # new_tasks = [ [
+        #     os.path.join(folder_path, str(file_name)), factor * np.random.poisson(lam = od_matrix), od_pairs, graph.copy()
+        #     ] for file_name in new_file_names ]
         new_tasks = [ [
             os.path.join(folder_path, str(file_name)), factor * np.random.poisson(lam = od_matrix), od_pairs, graph.copy()
             ] for file_name in new_file_names ]
         print( '| |  | {} tasks created.'.format( len(new_tasks) ) )
-        print( '| |  | assigning traffic (in progress)', end = '\r', flush=True )
+        print( '| |  | assigning traffic (in progress)', end = '\r', flush = True )
         # Assign New Traffic
         _start = time.time()
         edge_costs_list = mp_pool.starmap( intermediate, new_tasks )
