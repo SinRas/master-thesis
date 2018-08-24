@@ -9,9 +9,16 @@
 % ------ Math Operations ----- %
 \newcommand{\randomvariable}[1]{\mathfrak{#1}}
 \newcommand{\set}[1]{\mathcal{#1}}
+\newcommand{\vect}[1]{ \mathbf{#1} }
 \newcommand{\hollow}[1]{\mathbb{#1}}
 \newcommand{\mthfnc}[1]{ \mathit{#1} }
 \newcommand{\simplex}[1]{ \Delta^{#1-1} = \left\lbrace x \in \hollow{R}_+^{#1} \; : \; \sum^{#1}_{i=1} x_i = 1 \right\rbrace }
+\newcommand{\loss}[2]{ \mthfnc{l} \left( #1, #2 \right) }
+\newcommand{\Sum}[2]{\sum^{#1}_{#2}}
+\newcommand{\fphi}{ \mthfnc{\phi} } % function phi
+\newcommand{\fPhi}{ \mthfnc{\Phi} } % function Phi
+\newcommand{\fpsi}{ \mthfnc{\psi} } % function psi
+
 
 
 % ------ Double Column Footnote ----- %
