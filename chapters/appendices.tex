@@ -9,6 +9,51 @@
 
 ضمیمه‌ها در اینجا قرار می‌گیرند.
 
+% ---------------------------------------
+% Potential Taylor: Appendix Proof
+\subsection{
+اثبات قضیه‌ی 
+\ref{potentialtaylor}
+}
+ابتدا بسط تایلور تابع 
+$\fPhi$ 
+را در نقطه‌ی 
+$\vect{R}_{t-1}$ 
+می‌نویسیم و آن را در نقطه‌ی 
+$\vect{R}_{t}$ 
+حساب می‌کنیم.
+\[
+\begin{split}
+&\fPhi( \vect{R}_{t} ) = \fPhi( \vect{R}_{t-1} + \vect{r}_t )\\
+&= \fPhi( \vect{R}_{t-1} ) + \nabla \fPhi( \vect{R}_{t-1} ) + \frac{1}{2} \sum^{N}_{i=1} \sum^{N}_{j=1} \frac{ \partial^2 \fPhi }{ \partial u_i \partial u_j } \vert_{\xi} r_{i,t} r_{j,t}\\
+& ( \mbox{ where } \xi \mbox{ is some vector in } \hollow{R}^N )\\
+&\leq \fPhi( \vect{R}_{t-1} ) + \frac{1}{2} \sum^{N}_{i=1} \sum^{N}_{j=1} \frac{ \partial^2 \fPhi }{ \partial u_i \partial u_j } \vert_{\xi} r_{i,t} r_{j,t}\\
+& ( \mbox{ using Blackwell's Condition } )
+\end{split}
+\]
+حال با استفاده از تعریف تابع 
+$\fPhi$:
+\[
+\begin{split}
+&\sum^{N}_{i=1} \sum^{N}_{j=1} \frac{\partial^2 \fPhi}{\partial u_i \partial u_j}\vert_{\xi} r_{i,t} r_{j,t}\\
+&= \fpsi^{\prime\prime} \left( \Sum{N}{i=1} \fphi(\xi_i) \right) \Sum{N}{i=1} \Sum{N}{j=1} \fphi^\prime (\xi_i) \fphi^\prime (\xi_j) r_{i,t} r_{j,t}\\
+& + \fpsi^\prime \left( \Sum{N}{i=1} \fphi(\xi_i) \right) \Sum{N}{i=1} \fphi^{\prime\prime} (\xi_i) r^{2}_{i,t}\\
+&= \fpsi^{\prime\prime} \left( \Sum{N}{i=1} \fphi(\xi_i) \right) \left( \Sum{N}{i=1} \fphi^{\prime} (\xi_i) r_{i,t} \right)^2 + \fpsi^\prime \left( \Sum{N}{i=1} \fphi( \xi_i ) \right) \Sum{N}{i=1} \fphi^{\prime\prime} (\xi_i) r^{2}_{i,t}\\
+& \leq \fpsi^\prime \left( \Sum{N}{i=1} \fphi( \xi_i ) \right) \Sum{N}{i=1} \fphi^{\prime\prime} (\xi_i) r^{2}_{i,t} \hspace{1cm} \mbox{since } \fpsi \mbox{ is concave}\\
+& \leq \mthfnc{C} (\vect{r}_t)
+\end{split}
+\]
+که در گام آخر از تعریف 
+$\mthfnc{C} (\vect{r}_t)$ 
+که در قضیه‌ی
+\ref{potentialtaylor} 
+آمده، استفاده شده است. پس بدست آوردیم که در هر گام خواهیم داشت:
+\[
+\fPhi (\vect{R}_{t}) - \fPhi (\vert{R}_{t-1}) \leq \frac{1}{2} \mthfnc{C} (\vect{r}_t)
+\]
+صورت قضیه با جمع بستن بر روی زمان 
+$t = 1, \cdots, n$ 
+بدست می‌آید.
 
 
 
