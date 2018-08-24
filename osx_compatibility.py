@@ -25,6 +25,8 @@ def modify_file( file_path ):
 
 # Main
 if __name__ == '__main__':
+    # Report
+    print("\n# --- OSX Compatibility\n")
     # Base Files
     folder_name = '.'
     # Folder Name

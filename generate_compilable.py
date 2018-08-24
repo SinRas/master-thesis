@@ -10,6 +10,8 @@ compilable_flag = '-compilable'
 
 # Main
 if __name__ == '__main__':
+    # Report
+    print("\n# --- Convert Compilables\n")
     # List files
     for folder_name in folder_names:
         # List files
