@@ -191,7 +191,7 @@ $\set{P}(src,dst) = \{ p_i \}^{k}_{i=1}$
 \]
 هدف یافتن وزن‌های مناسب برای هر مسیر میان مبداء و مقصد است که تخمین مناسب‌تری از زمان سفر را به ما بدهد
 \[
-\mbox{find } x_{t-1} \in \simplex{k} \mbox{ s.t. } \sum^{k}_{i=1} x_{t-1}(i) * \mthfnc{T}_t(p_i) \approx \min_{i = 1, \cdots, k} \mthfnc{T}_t(p_i)
+\mbox{find } x_{t-1} \in \simplex{k}{set} \mbox{ s.t. } \sum^{k}_{i=1} x_{t-1}(i) * \mthfnc{T}_t(p_i) \approx \min_{i = 1, \cdots, k} \mthfnc{T}_t(p_i)
 \]
 مسئله به بیان یادگیری به کمک توصیه‌ی متخصص‌ها
 \LTRfootnote{
@@ -257,7 +257,7 @@ $t+1$
 
 اگر فرض کنیم که فضای پیش‌آمدها محدب است می‌توانیم به مسئله به شکل:
 \[
-\mbox{find } x_{t-1} \in \simplex{k} \mbox{ s.t. } \sum^{k}_{i=1} x_{t-1}(i) \mthfnc{e}_i(t-1) \approx y_t
+\mbox{find } x_{t-1} \in \simplex{k}{set} \mbox{ s.t. } \sum^{k}_{i=1} x_{t-1}(i) \mthfnc{e}_i(t-1) \approx y_t
 \]
 مسئله به بیان یادگیری به کمک توصیه‌ی متخصص‌ها: هدف یافتن وزن‌دهی مناسب به متخصص‌ها است به گونه‌ای که رفتار سهم را بخوبی بتوانیم در لحظه‌های بعد پیش‌بینی کنیم.
 

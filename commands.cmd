@@ -12,7 +12,12 @@
 \newcommand{\vect}[1]{ \mathbf{#1} }
 \newcommand{\hollow}[1]{\mathbb{#1}}
 \newcommand{\mthfnc}[1]{ \mathit{#1} }
-\newcommand{\simplex}[1]{ \Delta^{#1-1} = \left\lbrace x \in \hollow{R}_+^{#1} \; : \; \sum^{#1}_{i=1} x_i = 1 \right\rbrace }
+\newcommand{\simplex}[2]{%
+    \IfEqCase{#2}{%
+    	{}{ \Delta^{#1-1} }%
+        {set}{ \Delta^{#1-1} = \left\lbrace x \in \hollow{R}_+^{#1} \; : \; \sum^{#1}_{i=1} x(i) = 1 \right\rbrace }%
+     }
+}%
 \newcommand{\loss}[2]{ \mthfnc{l} \left( #1, #2 \right) }
 \newcommand{\Sum}[2]{\sum^{#1}_{#2}}
 \newcommand{\fphi}{ \mthfnc{\phi} } % function phi
