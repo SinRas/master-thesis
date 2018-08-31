@@ -1,6 +1,8 @@
 % !TEX encoding = UTF-8 Unicode
-% ------ Path to chapter files ----- %
+
+% ------ Paths ----- %
 \newcommand*{\chapters}{\basepath chapters/}
+\newcommand*{\images}{\basepath images/}
 
 % ------ SubSubSubSection ----- %
 \newcommand{\subsubsubsection}[1]{{\bf #1\par}}
