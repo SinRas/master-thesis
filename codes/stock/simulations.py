@@ -45,10 +45,10 @@ class DeterministicWeightedMajority:
         # Return
         return
     # Simulate
-    def simulate( self ):
+    def simulate( self, N_sim = 1000 ):
         N_max = len(self.expert_true.series)
         # Run
-        for idx in range(1000):
+        for idx in range( min(N_sim, N_max) ):
             ## Renormalize
             if( (idx+1) % 1 == 0 ):
                 self.renormalize_weights()
