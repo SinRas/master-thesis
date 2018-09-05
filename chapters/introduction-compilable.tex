@@ -335,9 +335,221 @@ Concept Drift
 \input{\basepath notes/computational-complexity-notations}
 
 
-
 % --> Convex Optimization
 \input{\basepath notes/convex-optimization}
+
+% ---------------------------------------
+% Convex Sets and Convex Functions
+\subsubsubsection{
+مجموعه‌ها و تابع‌های محدب
+}
+در این نوشته ما تنها به زیرمجموعه‌های فضاهای اقلیدسی می‌پردازیم.
+
+\textit{
+خط گذرنده از دو نقطه‌ی متمایز 
+$x_1, x_2 \in \hollow{R}^n$} 
+را به شکل
+\[
+\left\lbrace y = \theta x_1 + (1 - \theta ) x_2 | \theta \in \hollow{R} \right\rbrace
+\]
+نشان می‌دهیم. اگر داشته باشیم که 
+$\theta \in [0,1]$ 
+آنگاه مجموعه‌ی بدست آمده، 
+\textit{
+پاره‌خط میان 
+$x_1$ 
+و 
+$x_2$} 
+نامیده می‌شود.
+
+% ---------------------------------------
+
+یک مجموعه مانند 
+$\set{A} \subset \hollow{R}^n$ 
+را 
+\textit{
+آفین
+}\LTRfootnote{
+Affine
+} 
+می‌نامند اگر
+\[
+\forall x,y \in \set{A} \forall \theta \in \hollow{R} \; \Rightarrow \; \theta x + (1-\theta) y \in \set{A}
+\]
+یا به تعبیری دیگر، 
+\textit{
+به ازای هر دو نقطه در مجموعه، خط گذرنده از آن نیز به تمامی در مجموعه قرار گیرد
+}. 
+
+% ---------------------------------------
+
+یک مجموعه مانند 
+$\set{C} \subset \hollow{R}^n$ 
+را 
+\textit{
+محدب
+}\LTRfootnote{
+Convex
+} 
+گویند هر گاه:
+\[
+\forall x,y \in \set{A} \forall \theta \in [0,1] \; \Rightarrow \; \theta x + (1-\theta) y \in \set{A}
+\]
+به عبارت دیگر، به ازای هر دو نقطه‌ی درون مجموعه، پاره خط میان آن دو نیز به تمامی درون مجموعه قرار گیرد.
+
+با توجه به تعریف ارائه شده، می‌توان 
+\textit{
+پوش محدب
+}\LTRfootnote{
+Convex Hull
+} 
+یک مجموعه را به شکل زیر تعریف کرد:
+\[
+\mathbf{conv} \set{A} = \left\lbrace \theta x + (1-\theta) y \; \vert \; \forall x,y \in \set{A} , \forall \theta \in [0,1] \right\rbrace
+\]
+
+% ---------------------------------------
+
+با استفاده از تعریف خط واصل میان دو نقطه، می‌توان نمادگذاری کلّی‌تری برای تعریف یک مجموعه‌ی محدب معرفی کرد. ابتدا به تعریف 
+\textit{
+سادک
+}\LTRfootnote{
+Simplex
+} 
+می‌پردازیم. یک سادک از بعد 
+$n-1$، 
+زیرمجموعه‌ی از نقاط در فضای 
+$\hollow{R}^n$ 
+هستند که مختصات نامنفی دارند و مجموع مختصات هر نقطه، برابر واحد است.
+\[
+\simplex{n}{set}
+\]
+با تعریف ارائه شده از یک سادک، می‌توان ترکیب محدب 
+$k$ 
+نقطه را به شکل زیر معرفی کرد:
+\[
+\forall \{ x_i \}^{k}_{i=1} \in \hollow{R}^n , \forall \vect{\theta} \in \simplex{k}{} \Rightarrow y = \Sum{k}{i=1} \theta_i x_i
+\]
+و در نتیجه تعریف به بیانی دیگر از مجموعه‌های محدب ارائه کرد.
+
+
+
+% ---------------------------------------
+
+به منظور مرور سریع پیش‌نیازها، در رابطه با مجموعه‌های محدب، گزاره‌های زیر قابل اثبات هستند:
+\begin{itemize}
+\item \textbf{
+بسته بودن نسبت به اشتراک
+}: 
+خانواده‌ی مجموعه‌های محدب، تحت عمل اشتراک بسته است، به بیان دیگر اشتراک تعداد دلخواهی مجموعه‌ی محدب نیز یک مجموعه‌ی محدب است.
+
+\item \textbf{
+تبدیل تحت تابع‌های آفین
+}: 
+به ازای یک ماتریس دلخواه 
+$A \in \hollow{R}^{m \times n}$ 
+و یک بردار دلخواه 
+$b \in \hollow{R}^{m}$، 
+\textit{
+تبدیل آفین
+}\LTRfootnote{
+Affine Transformation
+} 
+$\mthfnc{f}( \vect{x} ) = A \vect{x} + b \; : \; \hollow{R}^{n} \rightarrow \hollow{R}^{m}$ 
+تعریف می‌شود. طبق این تعریف، تصویر هر مجموعه‌ی محدب تحت یک تابع آفین، مجموعه‌ای محدب خواهد بود.
+
+\item \textbf{
+همچنان محدب تحت تابع‌های 
+\textit{
+کسری خطی
+}\LTRfootnote{
+Linear-Fractional
+}
+و تابع
+\textit{
+منظر
+}\LTRfootnote{
+Perspective
+}
+}
+
+تابع کسری خطی به شکل زیر تعریف می‌شود:
+\[
+\mthfnc{f}( \vect{x} ) = \frac{ A \vect{x} + b }{ c^T \vect{x} + d } \; \mathbf{dom} \mthfnc{f} = \{ \vect{x} | c^T \vect{x} + d > 0 \}
+\]
+که در آن 
+$A \in \hollow{R}^{m \times n}$، 
+$b \in \hollow{R}^m$، 
+$c \in \hollow{R}^{n}$ 
+و 
+$d \in \hollow{R}$ 
+هستند. و تابع منظر نیز، 
+$\mthfnc{P} : \hollow{R}^{n+1} \rightarrow \hollow{R}^n$، 
+به شکل زیر تعریف می‌شود:
+\[
+\mathbf{dom} \mthfnc{P} = \hollow{R}^{n} \times \hollow{R}_{++} \; : \; \mthfnc{P}(z,t) = \frac{z}{t}
+\]
+
+مجموعه‌های محدب، تحت تبدیل تابع‌های کسری-خطی و تابع منظر، محدب باقی می‌مانند.
+
+
+
+
+
+\end{itemize}
+
+
+
+% ---------------------------------------
+% Convex Optimization Problems
+\subsubsubsection{
+مسئله‌های بهینه‌سازی محدب
+}
+
+مسئله‌ی بهینه‌سازی محدب را می‌توان به شکل مجموعه‌ای زیر تعریف کرد:
+\[
+\begin{array}{ll}
+\mbox{minimize} & \mthfnc{f}( x )\\
+\mbox{subject to} & x \in \set{D}
+\end{array}
+\]
+که در آن 
+$\mthfnc{f}$ 
+یک تابع محدب و 
+$\set{D}$ 
+یک مجموعه‌ی محدب است.
+
+همچنین به شکلی دیگر می‌توان مجموعه‌ی 
+$\set{D}$ 
+را به عنوان اشتراک چند تابع مقید کننده نگاه کرد:
+\[
+\begin{array}{lll}
+\mbox{minimize} & \mthfnc{f}( x )\\
+\mbox{subject to} & \mthfnc{g}_i(x) \leq 0 & i = 1, \cdots, m\\
+ & \mthfnc{h}_j(x) = 0 & j = 1, \cdots, l
+\end{array}
+\]
+که در آن تابع‌های 
+$\mthfnc{g}_i$ 
+محدب و تابع‌های 
+$\mthfnc{h}$ 
+آفین هستند.
+
+
+% ---------------------------------------
+% Unconstrained Convex Optimization Algorithms
+\subsubsubsection{
+روش‌های بهینه‌سازی محدب (بدون قید)
+}
+از جمله الگوریتم‌های بهینه‌سازی بدون قید، می‌توان به روش‌های زیر اشاره کرد:
+
+% ---------------------------------------
+% Higher Order Methods
+\subsubsubsection{
+روش‌های مرتبه‌ی بالاتر؟
+}
+
+
 
 
 
@@ -346,10 +558,51 @@ Concept Drift
 
 
 
-% --> Concept Drift
-\subsubsection{
-رانش مفهوم
-}
+% --> Concept Drift: A Survery on Concept Drift Adaptation
+\input{\basepath notes/survey-on-concept-drift-adaptation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
