@@ -90,9 +90,9 @@ class BaseChangeDetection:
         # Calculate P-Values
         p_value_vector = self.calc_p_values( losses )
         # Infer Based on p_value_vector
-        change_status = self.infer_from_vector( p_value_vector )
+        self.change_status = self.infer_from_vector( p_value_vector )
         # Return
-        return( change_status )
+        return( deepcopy(self.change_status) )
 
     # P-Values
     def calc_p_values( self, losses = None ):
