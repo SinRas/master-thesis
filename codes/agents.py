@@ -4,6 +4,7 @@ This includes any type of prediciton procedure.
 # Modules
 from copy import deepcopy # Deep Copy of objects
 import numpy as np # Numpy
+import talib # For Technical Indicators
 
 
 # Globals
@@ -121,6 +122,35 @@ class Delayed( BaseAgent ):
         action_next =  self.transformation( information ) # From -(lag + transformation_length) to -lag
         # Return
         return( deepcopy( action_next ) )
+
+## Delayed_MFI
+class DelayedMFI( Delayed ):
+    """Wrapper for Delayed which uses MFI as transformation function with given thresholds.
+    """
+    # Constructor
+    def __init__( self, timeperiod, lag = 1, upper_threshold = 70, lower_threshold = 30 ):
+        """MFI agent will calculate the delayed MFI value acts based on:
+                         70 < mfi : +1
+              30 < mfi < 70       : 0
+        mfi < 30                  : -1
+        """
+        # Defin Transformation Function
+        def mfi_from_state( memory ):
+            # Extract Info
+            high = np.array([ entry['High'] for entry in memory ], dtype=np.float)
+            low = np.array([ entry['Low'] for entry in memory ], dtype=np.float)
+            close = np.array([ entry['Close'] for entry in memory ], dtype=np.float)
+            volume = np.array([ entry['Volume'] for entry in memory ], dtype=np.float)
+            # Calculate
+            mfi = talib.MFI( high, low, close, volume, timeperiod=timeperiod )[-1]
+            # Action
+            action = 1 if (mfi > upper_threshold) else ( -1 if mfi < lower_threshold else 0 )
+            return( action )
+        # Initialize Instance
+        # notice 'timeperiod+1' is requiring one extra memory entry. this is due to the definition of `talib.MFI`
+        super().__init__( lag = lag, transformation = mfi_from_state, transformation_length = (timeperiod+1) )
+        # Return
+        return
 
 
 
