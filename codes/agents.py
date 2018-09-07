@@ -19,6 +19,7 @@ class BaseAgent:
     """Base Agent class and functionality.
     A fully functional `Agent` class should implement the following:
 
+    - name : name of the class instance for referencing
     - time : last time reported by environment
     - memory : array of previously seen states
     - receive_state( state ): receive new state and manage memory
@@ -26,9 +27,11 @@ class BaseAgent:
     - reset() : reset the time and memory
     """
     # Constructor
-    def __init__( self ):
+    def __init__( self, name = None ):
         """Default Constructore.
         """
+        # Parameters
+        self.name = name if not( name is None ) else '{}'.format( self.__class__ )
         # Reset
         self.reset()
         # Return
@@ -64,7 +67,7 @@ class Delayed( BaseAgent ):
     """Agent that predicts 'None' or the lagged state value (assuming that state_space is a subset of action_space).
     """
     # Constructor
-    def __init__( self, lag = 1, transformation = None, transformation_length = None, transformation_wrap = False ):
+    def __init__( self, lag = 1, transformation = None, transformation_length = None, transformation_wrap = False, name = None ):
         """Set `lag` parameter.
 
         lag: must be an integer greater than 0.
@@ -88,7 +91,7 @@ class Delayed( BaseAgent ):
         assert lag > 0, "Agent: Delayed: lag must be greater than 0."
         self.lag = lag
         # Reset
-        super().reset()
+        super().__init__( name = name )
         # Return
         return
 
@@ -131,7 +134,7 @@ class DelayedMFI( Delayed ):
     """Wrapper for Delayed which uses MFI as transformation function with given thresholds.
     """
     # Constructor
-    def __init__( self, timeperiod, lag = 1, upper_threshold = 70, lower_threshold = 30 ):
+    def __init__( self, timeperiod, lag = 1, upper_threshold = 70, lower_threshold = 30, name = None ):
         """MFI agent will calculate the delayed MFI value acts based on:
                          70 < mfi : +1
               30 < mfi < 70       : 0
@@ -152,7 +155,7 @@ class DelayedMFI( Delayed ):
         # Initialize Instance
         # DEBUG notice 'timeperiod+1' is requiring one extra memory entry. this is due to the definition of `talib.MFI`
         # UPDATE: understood the problem. here the lag should be reduced by one. think about it.
-        super().__init__( lag = lag, transformation = mfi_from_state, transformation_length = (timeperiod+1) )
+        super().__init__( lag = lag, transformation = mfi_from_state, transformation_length = (timeperiod+1), name = name )
         # Return
         return
 
