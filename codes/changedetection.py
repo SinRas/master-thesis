@@ -140,7 +140,8 @@ class KS_BenjaminiHochberg( BaseChangeDetection ):
         ## Benjamini-Hochberg
         def infer_from_vector( p_value_vector ):
             changed = KS_BenjaminiHochberg.p_adjust_bh( np.abs(p_value_vector) ) < p_value_threshold
-            return( p_value_vector * changed )
+            signs = np.sign( p_value_vector )
+            return( signs * changed )
 
         ## Kolmogorov-Smirnoff
         def calc_series_p_value( loss_series ):
