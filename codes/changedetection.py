@@ -12,6 +12,11 @@ from copy import deepcopy # Deep Copy of objects
 
 
 # Methods
+## Non-Zero Sign
+def nonzero_sign( x ):
+    """Assume that sign of 0 is 1.
+    """
+    return( 2*np.array(x >= 0, dtype = np.int) - 1 )
 
 
 # Classes
@@ -139,8 +144,8 @@ class KS_BenjaminiHochberg( BaseChangeDetection ):
         # Methods
         ## Benjamini-Hochberg
         def infer_from_vector( p_value_vector ):
-            changed = KS_BenjaminiHochberg.p_adjust_bh( np.abs(p_value_vector) ) < p_value_threshold
-            signs = np.sign( p_value_vector )
+            changed = np.array( KS_BenjaminiHochberg.p_adjust_bh( np.abs(p_value_vector) ) < p_value_threshold, dtype=np.int )
+            signs = nonzero_sign(p_value_vector)
             return( signs * changed )
 
         ## Kolmogorov-Smirnoff
@@ -151,7 +156,7 @@ class KS_BenjaminiHochberg( BaseChangeDetection ):
             # Windows
             window_recent = loss_series[ -windows_sizes[0]: ]
             window_reference = loss_series[ -sum(windows_sizes): ][ :windows_sizes[1] ]
-            direction = np.sign( np.mean(window_reference) - np.mean(window_recent) ) # +1 means improving
+            direction = nonzero_sign( np.mean(window_reference) - np.mean(window_recent) ) # +1 means improving
             _,p_value = stats.ks_2samp( window_recent, window_reference )
             # Return
             return( direction * p_value )
