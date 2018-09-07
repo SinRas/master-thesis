@@ -147,7 +147,8 @@ class DelayedMFI( Delayed ):
             action = 1 if (mfi > upper_threshold) else ( -1 if mfi < lower_threshold else 0 )
             return( action )
         # Initialize Instance
-        # notice 'timeperiod+1' is requiring one extra memory entry. this is due to the definition of `talib.MFI`
+        # DEBUG notice 'timeperiod+1' is requiring one extra memory entry. this is due to the definition of `talib.MFI`
+        # UPDATE: understood the problem. here the lag should be reduced by one. think about it.
         super().__init__( lag = lag, transformation = mfi_from_state, transformation_length = (timeperiod+1) )
         # Return
         return
