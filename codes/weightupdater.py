@@ -27,6 +27,7 @@ class BaseWeightUpdater:
     """Base Weight Updater class and it's functionalities.
     A fully functional BaseWeightUpdater class should implement the following:
 
+    - memory : memory of reduced losses (based on change_status)
     - weight_repr_vector : representation of weight vector. this is to be
         transformed before being interpreted as weight
     - weight_vector( normalize = False ) : compute the weight_vector from the stored repr.
@@ -35,12 +36,17 @@ class BaseWeightUpdater:
         on arrived information.
     """
     # Constructor
-    def __init__( self, N ):
+    def __init__( self, N, max_memory = np.inf ):
         """Default Constructor.
 
         N : number of weights to store.
         """
         # Parameters
+        ## Max Memory Length
+        self.max_memory = max_memory
+        ## Number of Weights
+        assert isinstance(N, int), "WeightUpdater: BaseWeightUpdater: N must be an integer."
+        assert N > 0, "WeightUpdater: BaseWeightUpdater: N must be an greater than 0."
         self.N = N
         # Reset
         self.reset()
@@ -52,6 +58,7 @@ class BaseWeightUpdater:
         """
         # Parameters
         self.weight_repr_vector = None
+        self.memory = []
         # Return
         return
     # Weight Vector
@@ -79,7 +86,7 @@ class ExpWM( BaseWeightUpdater ):
     w(i) = exp( sum(losses_by_expert) * -beta ) => repr(i) = sum(losses_by_expert)
     """
     # Constructor
-    def __init__( self, N, beta, gamma = 0.5 ):
+    def __init__( self, N, beta, gamma = 0.5, max_memory = np.inf ):
         """Constructor for ExpWM.
 
         N    : number of agents to handle
@@ -89,15 +96,11 @@ class ExpWM( BaseWeightUpdater ):
         # Parameters
         ## Lingering Effect
         self.gamma = gamma
-        ## Number of Weights
-        assert isinstance(N, int), "WeightUpdater: ExpWM: N must be an integer."
-        assert N > 0, "WeightUpdater: ExpWM: N must be an greater than 0."
-        self.N = N
         ## Decaying Factor
         assert beta >= 0, "WeightUpdater: ExpWM: beta must be a non-negative real number."
         self.beta = beta
-        # Reset
-        self.reset()
+        # Super
+        super().__init__( N = N, max_memory = max_memory )
         # Return
         return
 
@@ -105,6 +108,8 @@ class ExpWM( BaseWeightUpdater ):
     def reset( self ):
         """Reset the weight representation vector.
         """
+        # Super
+        super().reset()
         # Parameters
         self.weight_repr_vector = np.zeros( self.N )
         # Return
@@ -133,8 +138,14 @@ class ExpWM( BaseWeightUpdater ):
         change_status : change status vector as reported by changedetection module.
         """
         # Update Representation
-        effect_of_change = -change_status * self.gamma
-        self.weight_repr_vector += loss_vector + effect_of_change
+        repr_delta = loss_vector - change_status * self.gamma
+        # Add to Memory
+        self.memory.append( deepcopy(repr_delta) )
+        ## Pop if required
+        if( len(self.memory) > self.max_memory ):
+            self.memory.pop(0)
+        # Update Repr
+        self.weight_repr_vector = np.sum( self.memory, axis = 0 )
         # Return
         return
 
