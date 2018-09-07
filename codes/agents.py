@@ -118,7 +118,10 @@ class Delayed( BaseAgent ):
         if( len(memory) < (self.lag + self.transformation_length) ):
             return
         # Action
-        information = deepcopy( memory[ -(self.lag+self.transformation_length): ][ :self.transformation_length ] )
+        if( self.transformation_length == 0 ):
+            information = deepcopy( memory[ -(self.lag+self.transformation_length): ][0] )
+        else:
+            information = deepcopy( memory[ -(self.lag+self.transformation_length): ][ :self.transformation_length ] )
         action_next =  self.transformation( information ) # From -(lag + transformation_length) to -lag
         # Return
         return( deepcopy( action_next ) )
