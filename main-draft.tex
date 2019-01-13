@@ -1,0 +1,427 @@
+% !TEX encoding = UTF-8 Unicode
+\documentclass[a4paper,11px]{article}
+
+% ------ Base Path ----- %
+\newcommand{\basepath}{./}
+
+% ------- Style Packages ------------------ %
+\input{styles.sty}
+
+% ------- XePersian ------------------ %
+\usepackage[extrafootnotefeatures]{xepersian}
+
+% ------ Font Styles ---------------- %
+\settextfont[Scale=1]{XBNiloofar}
+\setdigitfont{PGaramond}
+
+% ------- Commands ------------------ %
+\input{commands.cmd}
+
+
+
+
+\begin{document}
+
+% ----------------------------------- %
+% Cover Page
+\thispagestyle{empty}
+\begin{figure}[!hbt]
+\centering
+\includegraphics[width=4cm]{\images logo.pdf}
+\centering
+\end{figure}
+
+\vspace{-5mm}
+\begin{center}
+\large
+دانشگاه صنعتی شریف\\
+دانشکده‌ی علوم ریاضی
+\end{center}
+
+\vspace{5mm}
+\begin{center}
+\large
+\textbf{
+پایان‌نامه‌ی کارشناسی ارشد\\
+ریاضی کاربردی
+}
+\end{center}
+
+
+\vspace{5mm}
+\begin{center}
+\Large
+\textbf{
+بهینه‌سازی محدب بر خط در حضور رانش مفهوم
+}
+\end{center}
+
+
+\vspace{10mm}
+\begin{center}
+\large
+نگارش:
+\\
+\textbf{
+سینا رسولی
+}
+\end{center}
+
+
+
+\vspace{10mm}
+\begin{center}
+\large
+استاد راهنما:
+\\
+\textbf{
+محمدرضا رزوان
+}
+\end{center}
+
+\vspace{2mm}
+
+\begin{center}
+\large
+استاد راهنمای همکار:
+\\
+\textbf{
+کسری علیشاهی
+}
+\end{center}
+
+
+
+\vfill
+\begin{center}
+\Large \textbf{
+۳۱ شهریور ۱۳۹۷
+}
+\end{center}
+
+
+\newpage
+% Cover Page: End
+
+
+% ----------------------------------- %
+% Dedicated to
+\vfill
+
+{\Large
+\textbf{
+تقدیم به:
+}
+
+\vfill
+
+نتیجه‌ی زحمات شماست جایگاهی که اکنون در آن هستم.
+
+هر آنچه نیک، از شماست و هر آنچه نقص، از کاستی‌های من.
+
+این نوشته را تقدیم می‌کنم به خانواده‌ی عزیزم که همراه من بودند.
+
+\vfill
+
+با تشکر از تمامی انسان‌هایی که در راه زندگی من قرار گرفتند.
+
+چه خوب، چه بد.
+
+تلاش کرده‌ام که تامی‌توانم از تک‌تک آن‌ها چیزی بیاموزم.
+
+این نوشته را به آن‌ها نیز تقدیم می‌کنم.
+
+\vfill
+
+
+اگر آفریده نشده بودم، نمی‌توانستم این نوشته را بنویسم.
+
+این نوشته را به 
+\textbf{
+او
+} 
+نیز تقدیم می‌کنم.
+
+
+}
+
+\vfill
+\newpage
+% Dedicated to: End
+
+
+% ----------------------------------- %
+% Abstract
+
+% Abstract: End
+
+% ----------------------------------- %
+% Foreword (Acknowledgement)
+\section*{
+تقدیر
+}
+
+پیش از شروع مطالب نیاز است که از تمامی افرادی که در راه گردآوری، تدوین و انجام این پایان‌نامه مرا یاری کردن تشکر کنم.
+
+\vspace{10mm}
+
+با تشکر از 
+\textit{
+احمد احیایی
+} 
+به خاطر راه‌نمایی‌ها و مشورت‌های صمیمانه‌اش در راستای پیش برد این پایان‌نامه.
+
+\vspace{10mm}
+
+با تشکر از 
+\textit{
+دکتر محمد طهرانی
+} 
+به خاطر راهنمایی‌هایش در راستای انجام پایان‌نامه.
+
+\vspace{10mm}
+
+با تشکر فراوان از شرکت 
+\textbf{
+تحلیل و تصویر داده (شمارا)
+} 
+به خاطر امکانات دفتری و سخت‌افزاری که برای انجام شبیه‌سازی‌ها، با کمال بخشندگی در اختیار اینجانب قرار دادند.
+
+\vspace{10mm}
+با تشکر از 
+\textbf{
+سازمان اسناد و کتاب‌خانه‌ی ملی ایران
+} 
+به خاطر محیط حرفه‌ای و آرامی که برای مطالعه، فراهم کرده است و اینجانب از آن استفاده کردم.
+
+\newpage
+% Foreword: End
+
+
+% ----------------------------------- %
+% Table of Contents
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+\newpage
+% Table of Contents: End
+
+
+% ----------------------------------- %
+% List of Figures
+\listoffigures
+
+\newpage
+% List of Figures: End
+ 
+ 
+ % ----------------------------------- %
+% List of Tables
+
+\newpage
+% List of Tables: End
+
+% ----------------------------------- %
+% Introduction: Motivation and Background
+\import{\chapters}{introduction.tex}
+
+\newpage
+% Introduction: End
+
+
+% ----------------------------------- %
+% Previous Research
+\import{\chapters}{previous-research.tex}
+
+\newpage
+% Previous Research: End
+
+
+% ----------------------------------- %
+% Currnet Research
+\import{\chapters}{current-research.tex}
+
+\newpage
+% Current Research: End
+
+
+% ----------------------------------- %
+% Our Approach
+\import{\chapters}{our-approach.tex}
+
+\newpage
+% Our Approach: End
+
+
+
+% ----------------------------------- %
+% Our Results
+\import{\chapters}{our-results.tex}
+
+\newpage
+% Our Results: End
+
+
+
+% ----------------------------------- %
+% Conclusion
+\import{\chapters}{conclusion.tex}
+
+\newpage
+% Conclusion: End
+
+
+
+% ----------------------------------- %
+% Appendices
+\import{\chapters}{appendices.tex}
+
+\newpage
+% Appendices: End
+
+
+
+
+% ----------------------------------- %
+% References
+\import{\chapters}{references.tex}
+
+\newpage
+% References: End
+
+
+
+% ----------------------------------- %
+% Abstract: Latin
+\begin{latin}
+\begin{abstract}
+Abstract of the thesis.
+\end{abstract}
+\end{latin}
+\newpage
+% Abstract: Latin End
+
+
+
+% ----------------------------------- %
+% Cover Page: Latin
+\thispagestyle{empty}
+\begin{latin}
+
+\begin{figure}[!hbt]
+\centering
+\includegraphics[width=4cm]{\images logo.pdf}
+\centering
+\end{figure}
+
+\vspace{-5mm}
+\begin{center}
+\large
+Sharif University of Technology\\
+Mathematical Science Department
+\end{center}
+
+\vspace{5mm}
+\begin{center}
+\large
+\textbf{
+Master of Science Thesis\\
+Applied Mathematics
+}
+\end{center}
+
+
+\vspace{5mm}
+\begin{center}
+\Large
+\textbf{
+Online Convex Optimization in presence of Concept Drift
+}
+\end{center}
+
+
+\vspace{10mm}
+\begin{center}
+\large
+Author:
+\\
+\textbf{
+Sina Rasouli
+}
+\end{center}
+
+
+
+\vspace{10mm}
+\begin{center}
+\large
+Advisor:
+\\
+\textbf{
+Mohammad-Reza Razvan
+}
+\end{center}
+
+\vspace{2mm}
+
+\begin{center}
+\large
+Co-Advisor:
+\\
+\textbf{
+Kasra Alishahi
+}
+\end{center}
+
+
+
+\vfill
+\begin{center}
+\large \textbf{
+2018 September 22
+}
+\end{center}
+
+\end{latin}
+
+
+\newpage
+% Cover Page: Latin: End
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
